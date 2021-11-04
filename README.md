@@ -1,4 +1,9 @@
-### Hi there 👋
+# Hi I'm Philipp 👋
+
+> What I cannot create, I do not understand
+> - Richard Feynman
+
+**I'm a Roboticist 🤖 and Coder 💻 **
 
 <!--
 **foehnx/foehnx** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
