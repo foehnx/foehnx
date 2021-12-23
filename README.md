@@ -1,19 +1,29 @@
-<h1 align="center">Hi I'm Philipp 👋 <br> I'm a Roboticist 🤖 and Coder 💻</h1>
+<p align="center">
+<img src="https://readme-typing-svg.herokuapp.com?font=Lato&size=30&color=%23C8D0D8&center=true&vCenter=true&lines=I'm+Philipp+👋;I'm+a+Roboticist+🤖;I'm+a+Programmer+💻;I'm+a+Researcher+🔬">
+</p>
+<!-- 
+<img src="https://readme-typing-svg.herokuapp.com?font=Lato&size=32&color=%23C8D0D8&center=true&vCenter=true&lines=I'm+Philipp+👋;I'm+a+Roboticist+🤖;I'm+a+Programmer+💻;I'm+a+Researcher+🔬"> -->
 
-> ***What I cannot create, I do not understand - Richard Feynman***
+> ***What I cannot create, I do not understand*** - *Richard Feynman*
+
+# About
+
+Ever since I played with Lego as a little child, I’ve been fascinated with automation, robotics, and teaching machines to be useful in general.
+Nowadays, I would summarize my passion as the science of **efficient machine-comprehensible problem formulation**, which I try to apply to estimation and control problems on autonomous drones.
+
+---
+
+# Publications
 
 
-<!--
-**foehnx/foehnx** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+# Education
+
+* :mortar_board: 2017 - 2021: PhD in Robotics
+* :school: 2015 - 2017: MSc in Robotics, Systems, and Control
+* :school_satchel: 2011 - 2015: BSc in Mechanical Engineering
+
+# Coding
+
+![foehnx](https://github-readme-stats.vercel.app/api?username=foehnx&count_private=true&show_icons=true&theme=dracula)
