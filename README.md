@@ -1,11 +1,5 @@
 <div align="center">
 <img src="https://readme-typing-svg.demolab.com?font=Mona+Sans&size=30&color=%23C8D0D8&center=true&vCenter=true&lines=I'm+Philipp+👋;I'm+a+Roboticist+🤖;I'm+a+Programmer+💻;I'm+a+Researcher+🔬">
-<br>
-[About](#about) -
-[Work](#rocket-work) -
-[Research](#microscope-publications) -
-[Education](#mortar_board-education) -
-[Coding](#computer-coding-and-skills)
 </div>
 
 # About
