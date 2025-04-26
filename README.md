@@ -1,6 +1,12 @@
 <div align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Mona+Sans&size=30&color=%23C8D0D8&center=true&vCenter=true&lines=I'm+Philipp+👋;I'm+a+Roboticist+🤖;I'm+a+Programmer+💻;I'm+a+Researcher+🔬">
+
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Mona+Sans&size=28&weight=600&duration=2500&pause=1000&color=FFFFFF&width=435&center=true&lines=I'm+Philipp+%F0%9F%91%8B;I'm++a+Roboticist+%F0%9F%A4%96;I'm++a+Programmer+%F0%9F%92%BB;I'm++a+Researcher+%F0%9F%94%AC">
+  <img src="https://readme-typing-svg.demolab.com?font=Mona+Sans&size=28&weight=600&duration=2500&pause=1000&color=000000&width=435&center=true&lines=I'm+Philipp+%F0%9F%91%8B;I'm++a+Roboticist+%F0%9F%A4%96;I'm++a+Programmer+%F0%9F%92%BB;I'm++a+Researcher+%F0%9F%94%AC" />
+</picture>
 </div>
+
 
 # About
 
