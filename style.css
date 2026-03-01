@@ -1,0 +1,406 @@
+/* === Catppuccin Mocha (dark, default) === */
+:root, [data-theme="mocha"] {
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --sapphire: #74c7ec;
+  --teal: #94e2d5;
+  --green: #a6e3a1;
+  --yellow: #f9e2af;
+  --peach: #fab387;
+  --red: #f38ba8;
+  --mauve: #cba6f7;
+  --pink: #f5c2e7;
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+}
+
+/* === Catppuccin Latte (light) === */
+[data-theme="latte"] {
+  --base: #eff1f5;
+  --mantle: #e6e9ef;
+  --crust: #dce0e8;
+  --text: #4c4f69;
+  --subtext1: #5c5f77;
+  --subtext0: #6c6f85;
+  --overlay2: #7c7f93;
+  --overlay1: #8c8fa1;
+  --overlay0: #9ca0b0;
+  --surface2: #acb0be;
+  --surface1: #bcc0cc;
+  --surface0: #ccd0da;
+  --blue: #1e66f5;
+  --lavender: #7287fd;
+  --sapphire: #209fb5;
+  --teal: #179299;
+  --green: #40a02b;
+  --yellow: #df8e1d;
+  --peach: #fe640b;
+  --red: #d20f39;
+  --mauve: #8839ef;
+  --pink: #ea76cb;
+  --rosewater: #dc8a78;
+  --flamingo: #dd7878;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--base);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Header === */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 3.2rem;
+  background: var(--mantle);
+  border-bottom: 1px solid var(--surface0);
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  gap: 0.5rem;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  color: var(--subtext0);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+.header-btn:hover {
+  background: var(--surface0);
+  color: var(--text);
+}
+
+#header-title {
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-left: 0.5rem;
+}
+#header-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+#header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Theme toggle icon swap */
+[data-theme="latte"] #icon-moon { display: none; }
+[data-theme="latte"] #icon-sun  { display: block !important; }
+
+/* === Layout Shell === */
+#sidebar, #toc {
+  position: fixed;
+  top: 3.2rem;
+  bottom: 0;
+  width: 16rem;
+  background: var(--mantle);
+  border-color: var(--surface0);
+  overflow-y: auto;
+  z-index: 90;
+  transition: transform 0.25s ease;
+  padding: 1rem 0;
+}
+
+#sidebar {
+  left: 0;
+  border-right: 1px solid var(--surface0);
+  transform: translateX(-100%);
+}
+#sidebar.open { transform: translateX(0); }
+
+#toc {
+  right: 0;
+  border-left: 1px solid var(--surface0);
+  transform: translateX(100%);
+}
+#toc.open { transform: translateX(0); }
+
+.sidebar-header {
+  padding: 0 1.2rem 0.6rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--overlay1);
+}
+
+#sidebar ul, #toc ul {
+  list-style: none;
+}
+#sidebar li a, #toc li a {
+  display: block;
+  padding: 0.3rem 1.2rem;
+  color: var(--subtext0);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.12s, color 0.12s;
+}
+#sidebar li a:hover, #toc li a:hover {
+  background: var(--surface0);
+  color: var(--text);
+}
+#sidebar li a.active {
+  color: var(--blue);
+  background: var(--surface0);
+}
+
+#toc li.toc-h2 a {
+  padding-left: 2rem;
+  font-size: 0.85rem;
+}
+
+/* === Overlay for mobile drawers === */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 80;
+}
+.overlay.active {
+  display: block;
+}
+
+/* === Main Content === */
+#content {
+  margin-top: 3.2rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  transition: margin 0.25s ease;
+}
+
+#article {
+  width: 100%;
+  max-width: 52rem;
+}
+
+/* === Wide screens: sidebars push content === */
+@media (min-width: 1200px) {
+  #sidebar {
+    transform: translateX(0);
+  }
+  #sidebar.open { transform: translateX(0); }
+  #sidebar.closed { transform: translateX(-100%); }
+
+  #toc {
+    transform: translateX(0);
+  }
+  #toc.open { transform: translateX(0); }
+  #toc.closed { transform: translateX(100%); }
+
+  #content {
+    margin-left: 16rem;
+    margin-right: 16rem;
+    transition: margin 0.25s ease;
+  }
+  #content.sidebar-closed {
+    margin-left: 0;
+  }
+  #content.toc-closed {
+    margin-right: 0;
+  }
+}
+
+/* On narrow screens, overlay behavior */
+@media (max-width: 1199px) {
+  #sidebar.open, #toc.open {
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+  }
+  #toc.open {
+    box-shadow: -4px 0 24px rgba(0,0,0,0.3);
+  }
+}
+
+/* === Article Typography === */
+#article h1, #article h2, #article h3, #article h4, #article h5, #article h6 {
+  color: var(--text);
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+  scroll-margin-top: 4rem;
+}
+#article h1 { font-size: 1.8rem; border-bottom: 1px solid var(--surface0); padding-bottom: 0.3em; }
+#article h2 { font-size: 1.45rem; border-bottom: 1px solid var(--surface0); padding-bottom: 0.2em; }
+#article h3 { font-size: 1.2rem; }
+#article h1:first-child { margin-top: 0; }
+
+#article p { margin: 0.8em 0; }
+
+#article a {
+  color: var(--blue);
+  text-decoration: none;
+}
+#article a:hover {
+  text-decoration: underline;
+}
+
+#article img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+#article blockquote {
+  border-left: 3px solid var(--lavender);
+  padding: 0.4em 1em;
+  margin: 1em 0;
+  color: var(--subtext1);
+  background: var(--surface0);
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+#article ul, #article ol {
+  margin: 0.6em 0;
+  padding-left: 1.8em;
+}
+
+#article li {
+  margin: 0.2em 0;
+}
+
+#article hr {
+  border: none;
+  border-top: 1px solid var(--surface1);
+  margin: 1.5em 0;
+}
+
+#article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+#article th, #article td {
+  border: 1px solid var(--surface1);
+  padding: 0.5em 0.8em;
+  text-align: left;
+}
+#article th {
+  background: var(--surface0);
+  font-weight: 600;
+}
+
+#article pre {
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 0.5rem;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+#article code {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+#article :not(pre) > code {
+  background: var(--surface0);
+  padding: 0.15em 0.35em;
+  border-radius: 0.3rem;
+  font-size: 0.88em;
+}
+
+#article details {
+  margin: 0.6em 0;
+  border: 1px solid var(--surface0);
+  border-radius: 0.4rem;
+  padding: 0.5em 0.8em;
+  background: var(--mantle);
+}
+#article details[open] {
+  padding-bottom: 0.8em;
+}
+#article summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--subtext1);
+}
+#article summary:hover {
+  color: var(--text);
+}
+
+#article .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.3em 0;
+}
+
+#article kbd {
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+  font-family: inherit;
+}
+
+#article mark {
+  background: var(--yellow);
+  color: var(--crust);
+  padding: 0.05em 0.2em;
+  border-radius: 0.2rem;
+}
+
+/* Task list checkboxes */
+#article ul:has(> li > input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0.5em;
+}
+#article input[type="checkbox"] {
+  margin-right: 0.4em;
+  accent-color: var(--blue);
+}
+
+/* === Scrollbar styling === */
+#sidebar::-webkit-scrollbar, #toc::-webkit-scrollbar {
+  width: 4px;
+}
+#sidebar::-webkit-scrollbar-thumb, #toc::-webkit-scrollbar-thumb {
+  background: var(--surface1);
+  border-radius: 2px;
+}
+
+/* === Loading state === */
+#article:empty::after {
+  content: "Loading…";
+  color: var(--overlay0);
+  font-style: italic;
+}
