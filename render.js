@@ -14,8 +14,8 @@
     const text = this.parser.parseInline(tokens);
     const clean = rawText.replace(/[\s]+/g, "-").replace(/[^\w-]/g, "").toLowerCase();
     const id = clean || "heading-" + headings.length;
-    if (depth <= 2) {
-      headings.push({ id, text: rawText, depth });
+    if (depth <= 3) {
+      headings.push({ id, text: rawText, html: text, depth });
     }
     return `<h${depth} id="${id}">${text}</h${depth}>`;
   };
@@ -41,6 +41,92 @@
   };
 
   marked.use(markedKatex({ throwOnError: false }));
+  marked.use(
+    markedEmoji.markedEmoji({
+      emojis: {
+        heart: "fa-solid fa-heart",
+        tada: "fa-solid fa-tada",
+        rocket: "fa-solid fa-rocket",
+        sparkles: "fa-solid fa-sparkles",
+        white_check_mark: "fa-solid fa-check",
+        warning: "fa-solid fa-triangle-exclamation",
+        bulb: "fa-solid fa-lightbulb",
+        microscope: "fa-solid fa-microscope",
+        robot: "fa-solid fa-robot",
+        computer: "fa-solid fa-computer",
+        mortar_board: "fa-solid fa-user-graduate",
+        school: "fa-solid fa-school",
+        chalkboard: "fa-solid fa-chalkboard-user",
+        git: "fa-brands fa-git-alt",
+        github: "fa-brands fa-github",
+      },
+      renderer: (token) => `<i class="${token.emoji}"></i>`,
+    })
+  );
+
+  // Custom extensions for mark, superscript, subscript
+  marked.use({
+    extensions: [
+      {
+        name: 'mark',
+        level: 'inline',
+        start(src) { return src.match(/==/)?.index; },
+        tokenizer(src) {
+          const rule = /^==([^=]+)==/;
+          const match = rule.exec(src);
+          if (match) {
+            return {
+              type: 'mark',
+              raw: match[0],
+              text: this.lexer.inlineTokens(match[1])
+            };
+          }
+        },
+        renderer(token) {
+          return `<mark>${this.parser.parseInline(token.text)}</mark>`;
+        }
+      },
+      {
+        name: 'superscript',
+        level: 'inline',
+        start(src) { return src.match(/\^/)?.index; },
+        tokenizer(src) {
+          const rule = /^\^([^^]+)\^/;
+          const match = rule.exec(src);
+          if (match) {
+            return {
+              type: 'superscript',
+              raw: match[0],
+              text: match[1]
+            };
+          }
+        },
+        renderer(token) {
+          return `<sup>${token.text}</sup>`;
+        }
+      },
+      {
+        name: 'subscript',
+        level: 'inline',
+        start(src) { return src.match(/~(?!~)/)?.index; },
+        tokenizer(src) {
+          const rule = /^~([^~]+)~(?!~)/;
+          const match = rule.exec(src);
+          if (match) {
+            return {
+              type: 'subscript',
+              raw: match[0],
+              text: match[1]
+            };
+          }
+        },
+        renderer(token) {
+          return `<sub>${token.text}</sub>`;
+        }
+      }
+    ]
+  });
+
   marked.setOptions({
     renderer,
     gfm: true,
@@ -139,25 +225,30 @@
   function buildTOC() {
     const list = document.getElementById("toc-list");
     list.innerHTML = "";
-    headings.forEach((h) => {
-      const li = document.createElement("li");
-      li.className = h.depth === 2 ? "toc-h2" : "toc-h1";
-      const a = document.createElement("a");
-      // Construct full hash with file + anchor
-      a.href = "#" + currentFile + "#" + h.id;
-      a.textContent = h.text;
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = document.getElementById(h.id);
-        if (target) target.scrollIntoView({ behavior: "smooth" });
-        // On mobile, close TOC after clicking
-        if (window.innerWidth < 1200) {
-          toggleToc(false);
-        }
+    const h1Count = headings.filter((h) => h.depth === 1).length;
+    const topDepth = h1Count === 1 ? 2 : 1;
+    const subDepth = topDepth + 1;
+    headings
+      .filter((h) => h.depth === topDepth || h.depth === subDepth)
+      .forEach((h) => {
+        const li = document.createElement("li");
+        li.className = h.depth === subDepth ? "toc-sub" : "toc-top";
+        const a = document.createElement("a");
+        // Construct full hash with file + anchor
+        a.href = "#" + currentFile + "#" + h.id;
+        a.innerHTML = h.html;
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.getElementById(h.id);
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+          // On mobile, close TOC after clicking
+          if (window.innerWidth < 1200) {
+            toggleToc(false);
+          }
+        });
+        li.appendChild(a);
+        list.appendChild(li);
       });
-      li.appendChild(a);
-      list.appendChild(li);
-    });
   }
 
   // --- Highlight active menu link ---
