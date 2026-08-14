@@ -21,13 +21,15 @@ I'm a robotics engineer with focus on real-time systems and a passion for elegan
 <br>
 <!-- <p align="right"> -->
 <p>
-Automation fascinated me ever since I played with Lego as a little child.<br>
+Autonomy and automation fascinated me ever since I played with Lego as a little child.<br>
 However, by experience I learned that the best solutions are usually the simple ones.<br>
 Not the easy ones, but the simple, elegant, readable yet impressive ones.
 </p>
 <br>
 
-I've done my PhD with the "Robotics and Perception Group" led by Prof. Davide Scaramuzza at the University of Zurich. My research is focused on control systems for vision-based aerial vehicles with prospects towards machine learning.
+Nowadays I'm working at Skydio where I focus on algorithms, implementation, and tooling for autonomous systems. This includes anything from model-predictive control, over bare-metal embedded motor control systems, to high-level logging and analysis tools.
+
+Before that, I've done my PhD with the "Robotics and Perception Group" led by Prof. Davide Scaramuzza at the University of Zurich. My research is focused on optimal control systems for vision-based aerial vehicles with prospects towards machine learning.
 
 In my master studies at the ETH Zürich in "Robotics, Systems and Control" I also worked with autonomous vehicles and electric drive systems. I've completed my master thesis on model predictive control for quadrotors and a semester thesis on interaction with quadrotors.
 
@@ -40,7 +42,8 @@ I've extended this experience in my master by supervising a team of 10 students 
 
 # :rocket: Work
 
-> Staff Autonomy Software Engineer with PhD in Robotics at [Skydio](http://skydio.com)
+> Staff Autonomy Software Engineer with PhD in Robotics at [Skydio](http://skydio.com) since 2022, where I mostly work on low-level embedded controls for both vehicles and motors, as well as onboard autonomy.
+> Recently I started to shift more towards infrastructure for autonomous systems, including simulation, data logging, replay, and visualization, as well as automated testing and validation.
 
 # :microscope: Publications
 
